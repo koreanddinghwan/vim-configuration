@@ -25,17 +25,12 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" load vimrc setting
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
 set hidden
 
 "p Syntax Highlighting
 if has("syntax")
 	syntax on
 endif
-filetype off
 set autoindent			"자동 들여쓰기
 set cindent				"C용 들여쓰기
 set	showcmd				"글자계산
@@ -242,7 +237,26 @@ omap ac <Plug>(coc-classobj-a)
 "tagbar toggle
 nmap <F8> :TagbarToggle<CR>
 
-"gc : commentary
+
+"cn : commentary
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 
 call plug#begin()
 Plug 'preservim/nerdtree'
@@ -258,11 +272,15 @@ Plug 'blueyed/vim-diminactive'
 Plug 'anekos/felis-cat-igirisu-toast-express'
 Plug 'puremourning/vimspector'
 Plug 'morhetz/gruvbox'
+Plug 'psliwka/vim-smoothie'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'preservim/nerdcommenter'
+Plug 'machakann/vim-highlightedyank'
 "ro : 환경변수, rf : r 콘솔 시작, \d : 1개 라인 자동넘기기, \l : 1개 라인만
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+"Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 call plug#end()
 
 colorscheme gruvbox
+filetype plugin on
