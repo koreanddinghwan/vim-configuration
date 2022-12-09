@@ -47,15 +47,16 @@ hi CursorLineNR cterm=bold ctermbg=235
 hi VertSplit ctermfg=black ctermbg=black
 hi StatusLine ctermfg=black
 hi StatusLineNC ctermfg=black
+hi SignColumn ctermbg=NONE
+hi LineNR ctermbg=NONE
 hi! BuffetTab ctermfg=190 ctermbg=234
 hi! BuffetBuffer ctermfg=190 ctermbg=234
 hi! BuffetCurrentBuffer cterm=bold ctermfg=17 ctermbg=234
 hi! BuffetActiveBuffer cterm=bold ctermfg=white ctermbg=234
 
-
 command Hnw set number! list! cursorline!
 command Snw set number list cursorline
-
+set splitright
 
 set tabstop=4			"탭을 4칸으로
 set mouse=n 			"vim에서 마우스 사용
@@ -237,27 +238,6 @@ omap ac <Plug>(coc-classobj-a)
 "tagbar toggle
 nmap <F8> :TagbarToggle<CR>
 
-
-"cn : commentary
-" Create default mappings
-let g:NERDCreateDefaultMappings = 1
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
@@ -275,9 +255,12 @@ Plug 'morhetz/gruvbox'
 Plug 'psliwka/vim-smoothie'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'preservim/nerdcommenter'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } "C+s
 Plug 'machakann/vim-highlightedyank'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'tpope/vim-commentary'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive' ":G diff, :G status
 "ro : 환경변수, rf : r 콘솔 시작, \d : 1개 라인 자동넘기기, \l : 1개 라인만
 "Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 call plug#end()
